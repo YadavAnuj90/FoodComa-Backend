@@ -2,6 +2,7 @@ const express = require ("express");
 
 const ServerConfig = require('./config/serverConfig');
 const connectDB = require("./config/dbConfig");
+const User = require("./schema/UserSchema");
 
 const app = express();
 
@@ -16,4 +17,5 @@ app.listen(ServerConfig.PORT, async () => {
     console.log(`Server started at port ${ServerConfig.PORT}`);
   
 
+    
 })
