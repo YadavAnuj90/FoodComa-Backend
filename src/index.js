@@ -2,7 +2,7 @@ const express = require ("express");
 
 const ServerConfig = require('./config/serverConfig');
 const connectDB = require("./config/dbConfig");
-const User = require("./schema/UserSchema");
+//const User = require("./schema/UserSchema");
 const userRouter = require("./routes/userRoute");
 const cartRouter = require("./routes/cartRoute");
 
