@@ -1,8 +1,8 @@
   
   const User = require('../schema/userSchema')
 
-  class UserRepository {
-    async findUser(parameters) {
+  
+    async function findUser(parameters) {
 
      try {
         
@@ -17,7 +17,7 @@
 
     }
 
-    async createUser(userDetails) {
+    async function createUser(userDetails) {
 
      try {
         
@@ -30,6 +30,9 @@
      }
 
     }
-  }
+  
 
-  module.exports  = UserRepository;
+  module.exports  = {
+     findUser,
+     createUser
+  }

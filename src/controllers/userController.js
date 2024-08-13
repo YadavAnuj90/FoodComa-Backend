@@ -1,14 +1,11 @@
-const UserRepository = require("../repositories/userRepository");
-const UserService = require("../services/userService");
 
+const { registerUser } = require('../services/userService')
  async function createUser(req ,res) {
-   
-    const userService  = new UserService(new UserRepository());
-
+  
 
    try {
     
-    const response = await userService.registerUser(req.body);
+    const response = await registerUser(req.body);
     
     return res.status(200).json({
         message: 'Successfully registered the user',
