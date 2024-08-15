@@ -1,5 +1,6 @@
 const express = require ("express");
 
+const cookieParser = require('cookie-parser');
 const ServerConfig = require('./config/serverConfig');
 const connectDB = require("./config/dbConfig");
 //const User = require("./schema/UserSchema");
@@ -8,7 +9,7 @@ const cartRouter = require("./routes/cartRoute");
 const authRouter = require("./routes/authRoute");
 
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({extended: true}));
