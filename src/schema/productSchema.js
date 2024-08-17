@@ -5,7 +5,8 @@ const productSchema = new mongoose.Schema({
         type: String,
         required:[true, "Product Name is required:"],
         minlength: [4, "Product name atleast 4 charecter!"],
-        trim:true
+        trim:true,
+        unique:true
 
     },
     discricption: {
