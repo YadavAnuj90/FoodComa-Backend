@@ -3,11 +3,7 @@ const {createProduct} = require('../services/productService')
 const AppError = require('../utils/appError');
 
 async function addProduct (req,res) {
-    // console.log(req.file);
-    // const result = await cloudinary.uploader.upload(req.file.path);
-    // console.log("result" , result);
-    // await fs.unlink(req.file.path);
-    // res.json({message: "Ok"});
+   
     try {
         const product = await createProduct({
             productName: req.body.productName,
