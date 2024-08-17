@@ -35,7 +35,7 @@ app.post('/photo' , uploader.single('catImg'),async (req,res) =>{
 
 app.listen(ServerConfig.PORT, async () => {
 
-    await connectDB();
+   await connectDB();
     console.log(`Server started at port ${ServerConfig.PORT}`);
   
 
