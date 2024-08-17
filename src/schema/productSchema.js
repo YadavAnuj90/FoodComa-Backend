@@ -26,9 +26,9 @@ const productSchema = new mongoose.Schema({
         required:[true , "Product prize is required "]
     },
     category: {
-        type: string ,
+        type: String ,
         enum: ['veg','nom veg','drinks', 'sides'],
-        default: veg
+        default: 'veg'
     },
     inStock: {
         type: Boolean,
