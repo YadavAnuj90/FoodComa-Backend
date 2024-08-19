@@ -15,6 +15,8 @@ async function addProduct (req,res) {
             inStock:req.body.inStock
          
          });
+         console.log("Back to controller " , product);
+         
          return res.status(201).json({
            success:true,
            message:"Successfully created the product!",

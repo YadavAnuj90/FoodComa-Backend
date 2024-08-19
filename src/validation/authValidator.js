@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/serverConfig');
+const UnAuthorisedError = require('../utils/unauthorisedError');
 
 async function isLoggedIn(req ,res,next) {
     const token  = req.cookies["authToken"];
@@ -11,24 +12,55 @@ async function isLoggedIn(req ,res,next) {
             message: "No Auth Token provided.!"
         });
     }
-    const decoded = jwt.verify(token, JWT_SECRET);
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        if(!decoded) {
+            throw new UnAuthorisedError();
+        }
+         
+    req.user = {
+        email:decoded.email,
+        id:decoded.id,
+        role: decoded.role
+    }
+    next();
 
-    if(!decoded) {
+    } catch (error) {
+
         return res.status(401).json({
             success:false,
             data: {},
-            error:"Not authenticated",
+            error: error,
             message: "Invalid Token provided"
         });
-    }
-   
-    req.user = {
-        email:decoded.email,
-        id:decoded.id
-    }
-    next();
+    }  
+  
 }
+/**
+ * This function cheaks if the authenticated user is an admin or not ?
+ * Beacuse we will call isAdmin after isLoggedIn thats why we will recive user details
+ */
+
+ function isAdmin(req,res,next) {
+    const loggedInUser = req.user;
+    if(loggedInUser.role === "ADMIN") {
+        next();
+    }else {
+        return res.status(401).json({
+            success: false,
+            data: {},
+            message: "You are not authorised for this action!",
+            error: {
+                statusCode: 401,
+                reasion: "Unauthorised user for this action"
+            }
+        })
+    }
+    
+  }
 
 module.exports = {
-    isLoggedIn
+    isLoggedIn,
+    isAdmin 
+    
 }
