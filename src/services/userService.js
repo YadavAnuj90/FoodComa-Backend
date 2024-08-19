@@ -1,5 +1,6 @@
 const { findUser, createUser } = require("../repositories/userRepository");
-
+const { createCart } = require('../repositories/cartRepository');
+ 
 
 
   
@@ -35,6 +36,7 @@ const { findUser, createUser } = require("../repositories/userRepository");
       if(!newUser){
         throw {reasion: "Something went wrong ,cannot create user", statusCode:500}
       }
+       await createCart(newUser._id);
 
         // 3.Return the details of created user:
         return newUser
