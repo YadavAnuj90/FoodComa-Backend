@@ -27,6 +27,13 @@ app.use('/products' , productRouter);
 app.use('/orders' , orderRouter);
 
 
+app.get('/ping', (req, res) => {
+    // controller
+    console.log(req.body);
+    console.log(req.cookies);
+    return res.json({message: "pong"});
+});
+
 
 app.post('/photo' , uploader.single('catImg'),async (req,res) =>{
     console.log(req.file);
