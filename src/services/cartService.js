@@ -68,7 +68,7 @@ async function modifyCart(userId , productId ,shouldAdd = true ) {
 
 }
 
- async function clearProductsCart(userId) {
+ async function clearProductsFromCart(userId) {
     const response = await clearCart(userId);
     return response;
     
@@ -77,5 +77,5 @@ async function modifyCart(userId , productId ,shouldAdd = true ) {
 module.exports = {
     getCart,
     modifyCart,
-    clearProductsCart
+    clearProductsFromCart
 }
