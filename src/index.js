@@ -3,7 +3,6 @@ const express = require ("express");
 const cookieParser = require('cookie-parser');
 const ServerConfig = require('./config/serverConfig');
 const connectDB = require("./config/dbConfig");
-//const User = require("./schema/UserSchema");
 const userRouter = require("./routes/userRoute");
 const cartRouter = require("./routes/cartRoute");
 const authRouter = require("./routes/authRoute");

@@ -1,5 +1,4 @@
-const { clearCart } = require("../repositories/cartRepository");
-const { getCart, addToCart, modifyCart, clearProductsCart } = require("../services/cartService");
+const { getCart, addToCart, modifyCart, clearProductsFromCart } = require("../services/cartService");
 const AppError = require("../utils/appError");
 
 async function getCartByUser(req,res) {
@@ -69,7 +68,7 @@ async function modifyProductToCart(req,res) {
  async function clearCartById(req, res) {
        
         try {
-            const cart = await clearProductsCart(req.user.id);
+            const cart = await clearProductsFromCart(req.user.id);
             return res.status(200).json({
                 success: true,
                 messgage: "Succesfully clear all  products from the cart",
