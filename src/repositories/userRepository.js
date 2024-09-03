@@ -1,5 +1,8 @@
   
-  const User = require('../schema/userSchema')
+  const User = require('../schema/userSchema');
+  const BadRequestError = require('../utils/badRequestError');
+  const InternalServerError = require('../utils/internalServerError');
+
 
   
     async function findUser(parameters) {
@@ -25,7 +28,15 @@
         return response;
 
      } catch (error) {
-        console.log(error);
+        if(error.name === 'ValidationError') {
+         const errorMessageList = Object.keys(error.errors).map((prooerty) => {
+               return error.errors[prooerty].message;
+         });
+         console.log(error);
+         throw new BadRequestError(errorMessageList);
+         
+        }
+        throw new InternalServerError();
         
      }
 
