@@ -6,9 +6,7 @@ const connectDB = require("./config/dbConfig");
 const userRouter = require("./routes/userRoute");
 const cartRouter = require("./routes/cartRoute");
 const authRouter = require("./routes/authRoute");
-const cloudinary  = require("./config/cloudinaryConfig");
 const uploader = require("./middlewares/multerMiddleware");
-const fs = require('fs/promises');
 const productRouter = require("./routes/productRoute");
 const orderRouter = require("./routes/orderRoute");
 
