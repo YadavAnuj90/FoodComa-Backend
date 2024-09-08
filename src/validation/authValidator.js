@@ -27,6 +27,22 @@ async function isLoggedIn(req ,res,next) {
 
     } catch (error) {
 
+        if(error.name === "TokenExpiredError") {
+            res.cookie("authToken", "", {
+                httpOnly: true,
+                sameSite: "lax",
+                secure: COOKIE_SECURE,
+                maxAge: 7 * 24 * 60 * 60 * 1000,
+                domain: FRONTEND_URL
+            });
+            return res.status(200).json({
+                success: true,
+                message: "Log out successfull",
+                error: {},
+                data: {}
+            });
+        }
+
         return res.status(401).json({
             success:false,
             data: {},
