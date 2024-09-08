@@ -13,7 +13,7 @@ const orderRouter = require("./routes/orderRoute");
 const app = express();
 
 app.use(cors( {
-    origin: 'http://localhost:5173',
+    origin: ServerConfig.FRONTEND_URL,
     credentials: true,
 }));
 app.use(cookieParser());
