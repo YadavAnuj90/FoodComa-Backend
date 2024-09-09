@@ -13,7 +13,7 @@ const orderRouter = require("./routes/orderRoute");
 const app = express();
 
 app.use(cors( {
-    origin: ServerConfig.FRONTEND_URL,
+    origin: 'https://main--relaxed-taiyaki-e45c38.netlify.app/',
     credentials: true,
 }));
 app.use(cookieParser());
