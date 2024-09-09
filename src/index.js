@@ -13,7 +13,7 @@ const orderRouter = require("./routes/orderRoute");
 const app = express();
 
 app.use(cors( {
-    origin: 'https://main--relaxed-taiyaki-e45c38.netlify.app/',
+    origin: ServerConfig.FRONTEND_URL,
     credentials: true,
 }));
 app.use(cookieParser());
@@ -37,13 +37,6 @@ app.get('/ping', (req, res) => {
 });
 
 
-app.post('/photo' , uploader.single('catImg'),async (req,res) =>{
-    console.log(req.file);
-    const result = await cloudinary.uploader.upload(req.file.path);
-    console.log("result" , result);
-    await fs.unlink(req.file.path);
-    res.json({message: "Ok"});
-})
 
 app.listen(ServerConfig.PORT, async () => {
 
