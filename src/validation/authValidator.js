@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/serverConfig');
+const { JWT_SECRET , COOKIE_SECURE , FRONTEND_URL } = require('../config/serverConfig');
 const UnAuthorisedError = require('../utils/unauthorisedError');
 
 async function isLoggedIn(req ,res,next) {
