@@ -14,7 +14,7 @@ const { isLoggedIn, isAdmin } = require('../validation/authValidator');
     );
  
  productRouter.get('/:id' , getProduct);
- productRouter.get('' , getProducts);
+ productRouter.get('/' , getProducts);
  productRouter.delete('/:id' ,  deleteProduct);
 
 
