@@ -13,7 +13,7 @@ const orderRouter = require("./routes/orderRoute");
 const app = express();
 
 app.use(cors( {
-    origin: ServerConfig.FRONTEND_URL,
+    origin: "https://pizza-frontend-git-main-yadavanuj90s-projects.vercel.app/",
     credentials: true,
 }));
 app.use(cookieParser());
